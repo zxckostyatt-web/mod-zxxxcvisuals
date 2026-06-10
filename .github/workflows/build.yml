@@ -1,8 +1,8 @@
-name: Build Minecraft Mod
+name: Build zxxxcvisuals
 
 on:
   push:
-    branches: [ "main" ] # Сборка будет запускаться при пуше в ветку main
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
@@ -11,28 +11,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. Скачиваем код репозитория на виртуальную машину GitHub
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    # 2. Устанавливаем Java 21 (требуется для 1.21.4)
     - name: Set up JDK 21
       uses: actions/setup-java@v4
       with:
         java-version: '21'
         distribution: 'temurin'
 
-    # 3. Даем права на запуск скрипта Gradle в Linux-окружении
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
-    # 4. Запускаем сборку мода (то же самое, что ./gradlew build)
     - name: Build with Gradle
       run: ./gradlew build
 
-    # 5. Сохраняем готовый .jar файл как артефакт, который можно скачать
     - name: Upload build artifact
       uses: actions/upload-artifact@v4
       with:
-        name: pulse-visuals-artifacts
-        path: build/libs/*.jar # Ищет собранный мод в этой папке
+        name: zxxxcvisuals-artifacts
+        path: build/libs/*.jar
