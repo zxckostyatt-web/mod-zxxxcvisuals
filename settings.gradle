@@ -5,8 +5,13 @@ pluginManagement {
     }
 }
 
-plugins {
-    id 'fabric-loom' version '1.9-SNAPSHOT'
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PRESERVE_FILES)
+    repositories {
+        maven { url = "https://maven.fabricmc.net/" }
+        maven { url = "https://libraries.minecraft.net/" }
+        mavenCentral()
+    }
 }
 
 rootProject.name = 'zxxxcvisuals'
